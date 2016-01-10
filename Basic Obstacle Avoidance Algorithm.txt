@@ -1,0 +1,23 @@
+public class ObstacleAvoidance()
+{
+	public static void main(String args[])
+	{
+		Sensors sensors = new Sensors();
+		FlightControl flightControl = new FlightControl();
+
+		boolean foundObstacle;
+		double currentFlyingDirection;
+		double angleToObstacle;
+		double newDirection;
+
+		while(true) {
+			foundObstacle = sensors.scanForObstacles();
+			if (foundObstacle) {
+				currentFlyingDirection = flightControl.getCurrentFlightDirection();
+				angleToObstacle = sensors.getAngleToObstacle();
+				newDirection = calcNewDirectionToGo(angleToObstacle, currentFlyingDirection);
+				flightControl.flyTo(newDirection);
+			}
+		}
+	}
+}
