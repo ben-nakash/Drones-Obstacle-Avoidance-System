@@ -72,7 +72,13 @@ void serialPrintRange(int pos, int distance)
     Serial.print("Position (deg): ");
     Serial.print(pos);
     Serial.print("\t\tDistance (cm): ");
-    Serial.println(distance);
+    Serial.print(distance);
+    if(distance <100) {
+      Serial.println(", WARNING - Obstacle detected!");
+    }
+    else {
+      Serial.println();
+    }
 }
 
 void loop()
