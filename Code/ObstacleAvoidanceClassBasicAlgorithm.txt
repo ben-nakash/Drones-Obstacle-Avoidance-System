@@ -1,0 +1,150 @@
+public class ObstacleAvoidance()
+{
+	private int final RIGHT=0, LEFT=1;
+	// Moves counters (So the drone won't keep going the same direction all the time,
+	// and try a different approach.
+	private int leftMoves, rightMoves, upMoves, lastMove;
+	private Sensors sensors;
+	private FlightControl flightControl;
+	// After passing an obstacle from above, I want to maintain the altitude for 15 seconds to make
+	// sure that the drone have passed the identified obstacle.
+	private 	boolean keepAltitude;
+	private double startTimeMeasure, currentTime;
+	
+	public static void main(String args[])
+	{
+		Random rand;
+		double aheadDistance;
+		double leftSideDistance;
+		double rightSideDistance;
+	
+		// Sensors class is in charge of reading the data from the sensors.
+		sensors = new Sensors();
+		// FlightControl class is in charge of telling the drone to move to a pre-defined directions.
+		flightControl = new FlightControl();
+		
+		lastMove = -1;
+		leftMoves = rightMoves = upMoves = 0;
+		keepAltitude = false;
+		
+		// The script runs until the drone is shut down.
+		while(true) {
+			aheadDistance = sensors.checkAhead();		
+			
+			if (aheadDistance < 1000) {
+				// There's an obstacle in less than 10 meters - DANGER!
+				// In such case we prefer that the drone would stop moving forward
+				// to prevent serious damage to the drone.
+				standStill();
+			}
+			
+			if (aheadDistance<4000) {
+				// Get a reading when sensor is 20 degrees to the left.
+				leftSideDistance = sensors.checkLeftSide();		
+				// Get a reading when sensor is 20 degrees to the right.
+				rightSideDistance = sensors.checkRightSide();	
+				
+				// If already tried going to go to the left/right 15 times and there's still an obstacle ahead.
+				// then I want to try from above.
+				if (needToGoUp()) {
+					if (upMoves >=40) {
+						// If we got here, the drone tried to go above the obstacle but it's getting
+						//too high, abort or do something so the drone won't get away too much.
+					}
+					else {
+						goUp();
+					}
+				}
+				// If left side looks clear.
+				else if (leftSideDistance > rightSideDistance) {
+					goLeft();
+				}
+				// If right side looks clear.
+				else if (leftSideDistance < rightSideDistance) {
+					goRight();
+				}
+				// If both left side and right side seems blocked but we still want to try to go sideways.
+				else {
+					// Go according to your last move. If such not exist - choose randomly.
+					switch(lastMove) {
+						case LEFT:	goLeft()
+											break;
+						
+						case RIGHT: goRight();
+											break;
+											
+						default:
+							rand = new Random();
+							if (rand.nextDouble() < 0.5) {
+								goLeft();
+							}
+							else {
+								goRight();
+							}
+					}
+				}
+			}
+			// In this case, there's no obstacle ahead to the drone.
+			else {
+				// If upMoves is different than 0, it means I tried to pass an obstacle from above.
+				// in that case I want to maintain my current altitude for 15 seconds to make sure
+				// the drone passed the obstacle, before getting back to regular altitude.
+				currentTime = System.getCurrentTime();
+				if (currentTime - startTimeMeasure > 15) {
+					keepAltitude = false;
+				}
+				if (keepAltitude) {
+					flightControl.maintainAltitude();
+				}
+					
+				upMoves = rightMoves = leftMoves = 0;
+			}
+		}
+	}
+	
+	private void updateMovesCounters(int direction) {
+		if (direction == RIGHT) {
+			rightMoves++;
+			leftMoves = upMoves = 0;
+		}
+		else if (direction == LEFT) {
+			leftMoves++;
+			rightMoves = upMoves = 0;
+		}
+		else {
+			upMoves++;
+			rightMoves = leftMoves = 0;
+		}
+	}
+	
+	private boolean needToGoUp() {
+		if (rightMoves >= 15 || leftMoves >= 15) {
+			return true;
+		}
+		return false;
+	}
+	
+	private void goLeft() {
+		flightControl.goLeft();
+		updateMovesCounters(LEFT);
+		lastMove = LEFT;
+	}
+	
+	private void goRight() {
+		flightControl.goRight();
+		updateMovesCounters(RIGHT);
+		lastMove = RIGHT;
+	}
+	
+	private void goUp() {
+		flightControl.goUp();
+		updateMovesCounters(UP);
+		lastMove = -1;
+		keepAltitude = true;
+		startTimeMeasure = System.getCurrentTime();
+	}
+	
+	private void standStill() {
+		flightControl.standStill();
+	}
+}

@@ -1,0 +1,30 @@
+public class Sensors() {
+
+	private int final servoPin;
+	private Servo myServo;
+	private Lidar_liteV2 mySensor;
+	
+	public Sensors() {
+		myServo.attach(servoPin);
+		mySensor.begin();
+	}
+
+	public double checkAhead() {
+		pointServoTo(0);
+		return measureDistance();
+	}
+	
+	public double checkLeftSide() {
+		pointServoTo(-20);
+		return measureDistance();
+	}
+	
+	public double checkRightSide() {
+		pointServoTo(20);
+		return measureDistance();
+	}
+	
+	private void pointServoTo(int angle) {
+		myServo.write(angle);
+	}
+}
