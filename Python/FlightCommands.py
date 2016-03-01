@@ -1,4 +1,4 @@
-def dont_move():
+def dont_move_forward():
 	print("standing still")
 
 def land():
@@ -10,10 +10,8 @@ def maintain_altitude():
 def go_left():
 	print("going left")
 
-
 def go_right():
 	print("going right")
-
 
 def go_up():
 	print("going up")
