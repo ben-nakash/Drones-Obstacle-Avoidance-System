@@ -16,6 +16,11 @@ class ObstacleAvoidance:
 		self.__deviation = 20
 		self.__safety_protocol = False
 
+	# This function will create a new thread, run an endless loop within it that would callable
+	# the search_and_avoid function each time.
+	def run(self):
+		return
+		
 	def search_and_avoid(self):
 		print("-----------------------------------------------------------")
 
@@ -60,7 +65,7 @@ class ObstacleAvoidance:
 					self.__safety_protocol = True
 				else:
 					self.go_up()
-
+	
 			# If left side looks clear.
 			elif __left_side_distance > __right_side_distance + self.__deviation:
 				self.go_left()
