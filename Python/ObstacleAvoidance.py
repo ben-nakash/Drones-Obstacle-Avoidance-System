@@ -1,159 +1,158 @@
-import random
-import Sensors
 import FlightCommands
 import time
+import Sensors
+import DistanceCalculator
+from threading import Thread
 
+LEFT = "left"
+RIGHT = "right"
+UP = "up"
+DEVIATION = 20
 
 class ObstacleAvoidance:
 
-	def __init__(self):
-		self.__right_moves = 0
-		self.__left_moves  = 0
-		self.__up_moves    = 0
-		self.__last_move   = None
-		self.__keep_altitude = False
-		self.__start_time_measure = 0
-		self.__deviation = 20
-		self.__safety_protocol = False
+    def __init__(self):
+        self.right_distance = 0
+        self.left_distance = 0
+        self.up_distance = 0
+        self.last_latitude = DistanceCalculator.get_current_latitude()
+        self.last_longitude = DistanceCalculator.get_current_longitude()
+        self.last_height = DistanceCalculator.get_current_height()
+        self.last_move = None
+        self.keep_altitude = False
+        self.start_time_measure = 0
+        self.deviation = 20
+        self.safety_protocol = False
 
-	# This function will create a new thread, run an endless loop within it that would callable
-	# the search_and_avoid function each time.
-	def run(self):
-		return
-		
-	def search_and_avoid(self):
-		print("-----------------------------------------------------------")
+    # This function create a new thread that runs a function with an endless loop
+    # that calls the search_and_avoid function each time.
+    def start_avoiding_obstacles(self):
+        new_thread = Thread(target=self.run(), args=[])
+        new_thread.start()
 
-		if self.__safety_protocol == True:
-			FlightCommands.land()
-			return
+    def run(self):
+        for i in range(0, 15):
+            self.search_and_avoid()
 
-		__ahead_distance = Sensors.check_ahead()
-		print("Ahead: %d" %__ahead_distance)
+    def search_and_avoid(self):
+        print("-----------------------------------------------------------")
 
-		# Taking care of false readings
-		if __ahead_distance <= 0 or __ahead_distance > 4000:
-			self.__last_move = None
-			self.reset_counters()
-			print("Clear")
-			return
+        if self.safety_protocol is True:
+            FlightCommands.land()
+            return
 
-		elif __ahead_distance < 4000:
-			if __ahead_distance < 1000:
-				# There's an obstacle in less than 10 meters - DANGER!
-				# In such case we prefer that the drone would stop moving forward
-				# to prevent serious damage to the drone.
-				print("Obstacle in less than 10 meters!")
-				FlightCommands.dont_move_forward() # Another option is to slow down drastically
-			else:
-				print("Obstacle in less than 40 meters")
+        ahead_distance = Sensors.check_ahead()
+        print("Ahead: %d" % ahead_distance)
 
-			# Get a reading when sensor is 20 degrees to the left.
-			__left_side_distance = Sensors.check_left_side()
-			# Get a reading when sensor is 20 degrees to the right.
-			__right_side_distance = Sensors.check_right_side()
-			print("Left: %d, Right: %d" % (__left_side_distance ,__right_side_distance))
+        # Taking care of false readings duo to no obstacle ahead
+        if ahead_distance <= 0 or ahead_distance > 4000:
+            self.last_move = None
+            self.reset_distances()
+            print("Clear")
+            return
 
-			# If already tried going to go to the left/right 10 times and there's still an obstacle ahead.
-			# then I want to try from above.
-			if self.need_to_go_up():
-				if self.__up_moves >= 4:
-					# Considering that each up move equals to 5 meter
-					# If the code reached here it means the drone raised 20 meters up and still see an obstacle.
-					# so in this case we prefer it would abort the mission in so it won't get too high or damaged.
-					FlightCommands.land()
-					self.__safety_protocol = True
-				else:
-					self.go_up()
-	
-			# If left side looks clear.
-			elif __left_side_distance > __right_side_distance + self.__deviation:
-				self.go_left()
+        elif ahead_distance < 4000:
+            if ahead_distance < 1000:
+                # There's an obstacle in less than 10 meters - DANGER!
+                # In such case we prefer that the drone would stop moving forward
+                # to prevent serious damage to the drone.
+                print("Obstacle in less than 10 meters!")
+                FlightCommands.dont_move_forward()  # Another option is to slow down drastically
+            else:
+                print("Obstacle in less than 40 meters")
 
-			# If right side looks clear.
-			elif __right_side_distance > __left_side_distance + self.__deviation:
-				self.go_right()
+            # Get a reading when sensor is 20 degrees to the left.
+            left_side_distance = Sensors.check_left_side()
+            # Get a reading when sensor is 20 degrees to the right.
+            right_side_distance = Sensors.check_right_side()
+            print("Left: %d, Right: %d" % (left_side_distance, right_side_distance))
 
-			# If both left and right gives about the same distance.
-			else:
-				if self.__last_move != None:
-					self.go_in_last_known_direction()
+            # If already tried going to go to the left/right 10 meters and there's
+            # still an obstacle ahead then I want to try from above.
+            if self.need_to_go_up() is True:
+                if self.up_distance >= 20:
+                    # If the code reached here it means the drone raised 20 meters up and still see an obstacle.
+                    # so in this case we prefer it would abort the mission in so it won't get too high or damaged.
+                    FlightCommands.land()
+                    self.safety_protocol = True
+                else:
+                    self.move_in_direction(UP)
 
-				else:
-					if __left_side_distance > __right_side_distance:
-						self.go_left()
+            # If left side looks clear.
+            elif left_side_distance > right_side_distance + DEVIATION:
+                self.move_in_direction(LEFT)
 
-					elif __left_side_distance < __right_side_distance:
-						self.go_right()
+            # If right side looks clear.
+            elif right_side_distance > left_side_distance + DEVIATION:
+                self.move_in_direction(RIGHT)
 
+            # If both left and right gives about the same distance.
+            else:
+                if self.last_move is not None:
+                    self.move_in_direction(self.last_move)
 
-		if self.__keep_altitude == True:
-			# If upMoves is different than 0, it means the drone tried to pass an obstacle from above.
-			# in that case I want to maintain my current altitude for 10 seconds to make sure
-			# the drone passed the obstacle, before getting back to regular altitude.
-			__current_time = int(round(time.time()))
-			print("keep altitude elapsed time: %d" %(__current_time - self.__start_time_measure))
-			if __current_time - self.__start_time_measure > 10:
-				__keep_altitude = False
+                else:
+                    if left_side_distance > right_side_distance:
+                        self.move_in_direction(LEFT)
 
-			if self.__keep_altitude == True:
-				FlightCommands.maintain_altitude()
+                    elif left_side_distance < right_side_distance:
+                        self.move_in_direction(RIGHT)
 
+        if self.keep_altitude is True:
+            # This means the drone tried to pass an obstacle from above.
+            # in that case I want to maintain my current altitude for 10 seconds to make sure
+            # the drone passed the obstacle, before getting back to regular altitude.
+            current_time = int(round(time.time()))
+            print("keep altitude elapsed time: %d" % (current_time - self.start_time_measure))
+            if current_time - self.start_time_measure > 10:
+                self.keep_altitude = False
 
+            if self.keep_altitude is True:
+                FlightCommands.maintain_altitude()
 
+    def need_to_go_up(self):
+        print("right_distance: %d, left_distance: %d, up_distance: %d" % (self.right_distance, self.left_distance, self.up_distance))
+        if self.right_distance >= 10 or self.left_distance >= 10:
+            return True
+        else:
+            return False
 
+    def move_in_direction(self, direction):
+        if direction == RIGHT:
+            FlightCommands.go_right()
 
+        elif direction == LEFT:
+            FlightCommands.go_left()
 
+        elif direction == UP:
+            FlightCommands.go_up()
+            self.keep_altitude = True
+            self.start_time_measure = round(time.time())
 
-	def need_to_go_up(self):
-		print("right_moves: %d, left_moves: %d, up_moves: %d" %(self.__right_moves, self.__left_moves, self.__up_moves))
-		if self.__right_moves >= 10 or self.__left_moves >=10:
-			return True
-		else:
-			return False
+        self.update_distance(direction)
+        self.last_move = direction
 
-	# Move the drone 5 Meters higher
-	def go_up(self):
-		FlightCommands.go_up()
-		self.update_moves_counters("up")
-		self.__last_move = "up"
-		self.__keep_altitude = True
-		self.__start_time_measure = round(time.time())
+    def reset_distances(self):
+        self.right_distance = self.left_distance = self.up_distance = 0
 
+    def update_distance(self, direction):
+        current_latitude = DistanceCalculator.get_current_latitude()
+        current_longitude = DistanceCalculator.get_current_longitude()
+        current_height = DistanceCalculator.get_current_height()
 
-	# Moves the drone 0.5 meter to the right
-	def go_right(self):
-		FlightCommands.go_right()
-		self.update_moves_counters("right")
-		self.__last_move = "right"
+        delta = DistanceCalculator.calculate_distance(
+            self.last_latitude, self.last_longitude, current_latitude, current_longitude)
 
-	# Moves the drone 0.5 meter to the left
-	def go_left(self):
-		FlightCommands.go_left()
-		self.update_moves_counters("left")
-		self.__last_move = "left"
+        if direction == RIGHT:
+            self.right_distance += delta
+            self.left_distance = 0
+        elif direction == LEFT:
+            self.left_distance += delta
+            self.right_distance = 0
+        elif direction == UP:
+            self.up_distance += current_height - self.last_height
+            self.left_distance = self.right_distance = 0
 
-
-	def go_in_last_known_direction(self):
-		print("Going same direction as before")
-		if self.__last_move == "left":
-			self.go_left()
-
-		elif self.__last_move == "right":
-			self.go_right()
-
-
-	def update_moves_counters(self, direction):
-		if direction == "right":
-			self.__right_moves += 1
-			self.__left_moves = 0
-		elif direction == "left":
-			self.__left_moves += 1
-			self.__right_moves = 0
-		elif direction == "up":
-			self.__up_moves += 1
-			self.__right_moves = self.__left_moves = 0
-
-
-	def reset_counters(self):
-		self.__right_moves = self.__left_moves = self.__up_moves = 0
+        self.last_latitude = current_latitude
+        self.last_longitude = current_longitude
+        self.last_height = current_height
