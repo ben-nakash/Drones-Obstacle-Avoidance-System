@@ -1,7 +1,7 @@
-import ObstacleAvoidance
+import obstacle_avoidance
 import time
 
-from ObstacleAvoidance import ObstacleAvoidance
+from obstacle_avoidance import ObstacleAvoidance
 
 bla = ObstacleAvoidance()
 
