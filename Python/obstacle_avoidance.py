@@ -1,5 +1,5 @@
 import time
-import distance_calculator
+from distance_calculator import DistanceCalculator
 from flight_commands import FlightCommands
 from sensors import Sensors
 from threading import Thread
@@ -17,40 +17,40 @@ MAX_LEFT_RIGHT = 10.0
 
 class ObstacleAvoidance:
 
-    def __init__(self):
+    def __init__(self, test_num):
         self.right_distance = 0.0
         self.left_distance = 0.0
         self.up_distance = 0.0
-        self.last_latitude = distance_calculator.get_current_latitude()
-        self.last_longitude = distance_calculator.get_current_longitude()
-        self.last_height = distance_calculator.get_current_height()
         self.last_move = None
         self.keep_altitude = False
         self.start_time_measure = 0.0
         self.deviation = 20.0
         self.safety_protocol = False
         self.flight_commands = FlightCommands()
-        self.sensors = Sensors()
+        self.sensors = Sensors(test_num)
+        self.distanceCalculator = DistanceCalculator(test_num)
+        self.last_latitude = self.distanceCalculator.get_current_latitude()
+        self.last_longitude = self.distanceCalculator.get_current_longitude()
+        self.last_height = self.distanceCalculator.get_current_height()
 
-    def init_sensors(self):
-        if self.sensors.connect() == -1:
-            return -1
+    # def init_sensors(self):
+    #     if self.sensors.connect() == -1:
+    #         return -1
 
     # This function create a new thread that runs a function with an endless loop
     # that calls the search_and_avoid function each time.
     def start_avoiding_obstacles(self):
-        if self.init_sensors() == -1:
-            print("Error connecting to lidar, terminating program")
-            return
-
+        # if self.init_sensors() == -1:
+        #     print("Error connecting to lidar, terminating program")
+        #     return
         new_thread = Thread(target=self.run(), args=[])
         new_thread.start()
 
     def run(self):
-        for i in range(0, 15):  # This should be an endless loop
-            self.search_and_avoid()
+        for i in range(0, 50):  # This should be an endless loop
+            self.main()
 
-    def search_and_avoid(self):
+    def main(self):
         print("-----------------------------------------------------------")
 
         if self.safety_protocol is True:
@@ -64,7 +64,7 @@ class ObstacleAvoidance:
         if ahead_distance <= 0 or ahead_distance > WARNING_DISTANCE:
             self.last_move = None
             self.reset_distances()
-            print("Clear")
+            print("Way is Clear")
             return
 
         elif ahead_distance < WARNING_DISTANCE:
@@ -127,8 +127,8 @@ class ObstacleAvoidance:
                 self.flight_commands.maintain_altitude()
 
     def need_to_go_up(self):
-        print("right_distance: %d, left_distance: %d, up_distance: %d"
-              % (self.right_distance, self.left_distance, self.up_distance))
+        # print("right_distance: %d, left_distance: %d, up_distance: %d"
+        #       % (self.right_distance, self.left_distance, self.up_distance))
         if self.right_distance >= MAX_LEFT_RIGHT or self.left_distance >= MAX_LEFT_RIGHT:
             return True
         else:
@@ -153,22 +153,25 @@ class ObstacleAvoidance:
         self.right_distance = self.left_distance = self.up_distance = 0
 
     def update_distance(self, direction):
-        current_latitude = distance_calculator.get_current_latitude()
-        current_longitude = distance_calculator.get_current_longitude()
-        current_height = distance_calculator.get_current_height()
+        current_latitude = self.distanceCalculator.get_current_latitude()
+        current_longitude = self.distanceCalculator.get_current_longitude()
+        current_height = self.distanceCalculator.get_current_height()
 
-        delta = distance_calculator.calculate_distance(
+        delta = self.distanceCalculator.calculate_distance(
             self.last_latitude, self.last_longitude, current_latitude, current_longitude)
 
         if direction == RIGHT:
             self.right_distance += delta
             self.left_distance = 0
+            print("Distance went right: %f" % self.right_distance)
         elif direction == LEFT:
             self.left_distance += delta
             self.right_distance = 0
+            print("Distance went left: %f" % self.left_distance)
         elif direction == UP:
             self.up_distance += current_height - self.last_height
             self.left_distance = self.right_distance = 0
+            print("Distance went up: %f" % self.up_distance)
 
         self.last_latitude = current_latitude
         self.last_longitude = current_longitude
