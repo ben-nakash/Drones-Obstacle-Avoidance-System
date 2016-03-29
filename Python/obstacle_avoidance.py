@@ -1,5 +1,5 @@
 import time
-from distance_calculator import DistanceCalculator
+from location import DistanceCalculator
 from flight_commands import FlightCommands
 from sensors import Sensors
 from threading import Thread
@@ -33,18 +33,17 @@ class ObstacleAvoidance:
         self.last_longitude = self.distanceCalculator.get_current_longitude()
         self.last_height = self.distanceCalculator.get_current_height()
 
-    # def init_sensors(self):
-    #     if self.sensors.connect() == -1:
-    #         return -1
-
     # This function create a new thread that runs a function with an endless loop
     # that calls the search_and_avoid function each time.
     def start_avoiding_obstacles(self):
-        # if self.init_sensors() == -1:
-        #     print("Error connecting to lidar, terminating program")
-        #     return
-        new_thread = Thread(target=self.run(), args=[])
-        new_thread.start()
+        if self.sensors.connect() == -1:
+            print("Error connecting to lidar, terminating program")
+            return
+        print ("Connected Successfuly to lidar!")
+        while 1:
+            print (self.sensors.check_ahead())
+        # new_thread = Thread(target=self.run(), args=[])
+        # new_thread.start()
 
     def run(self):
         for i in range(0, 50):  # This should be an endless loop

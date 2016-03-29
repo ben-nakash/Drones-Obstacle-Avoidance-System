@@ -1,4 +1,4 @@
-# from lidar_lite import LidarLite
+from lidar_lite import LidarLite
 import simulator
 
 
@@ -6,20 +6,21 @@ class Sensors:
 
     def __init__(self, test_num):
         self.scenario = test_num
-        # self.lidar = LidarLite()
+        self.lidar = LidarLite()
 
-    # def connect(self):
-    #     for i in range(0, 5):
-    #         if self.lidar.connect(4) is not 0:
-    #             continue
-    #         else:
-    #             return 0
-    #     return -1
+    def connect(self):
+        for i in range(0, 5):
+            if self.lidar.connect(1) < -1:
+                continue
+            else:
+                return 0
+        return -1
 
     def check_ahead(self):
+        ahead_read = self.lidar.get_distance()
         # return int(input("Enter Ahead Distance: "))
         # return random.randint(800,6000)
-        ahead_read = simulator.ahead_reading(self.scenario)
+        # ahead_read = simulator.ahead_reading(self.scenario)
         return ahead_read
 
     def check_left_side(self):

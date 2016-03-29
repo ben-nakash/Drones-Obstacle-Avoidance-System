@@ -1,7 +1,7 @@
 from obstacle_avoidance import ObstacleAvoidance
-import time
 
-class my_tester:
+
+class MyTester:
 
     def __init__(self, scenario):
         self.scenario = scenario
@@ -18,5 +18,5 @@ class my_tester:
 # print(newmillis)
 # print("delay= %ds" % (newmillis-millis))
 
-test = my_tester(1)
+test = MyTester(1)
 test.run_test()

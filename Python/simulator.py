@@ -10,10 +10,11 @@ latitude = 0
 longitude = 0
 index = -1
 
+
 def ahead_reading(scenario):
     global ahead
     global index
-    index = index+1
+    index = index + 1
     if scenario == 1:
         time.sleep(1)
         # if round(time.time()) - start_time < 3:
@@ -41,12 +42,14 @@ def left_reading(scenario):
     return random.randint(1000,5000)
     # return left[index]
 
+
 def right_reading(scenario):
     global right
     global index
     # if round(time.time()) - start_time < 3:
     return random.randint(1000,5000)
     # return right[index]
+
 
 def height_reading(scenario):
     global height
