@@ -3,20 +3,13 @@ from obstacle_avoidance import ObstacleAvoidance
 
 class MyTester:
 
-    def __init__(self, scenario):
-        self.scenario = scenario
+    def __init__(self):
         self.counter = 0
 
     def run_test(self):
-        oa = ObstacleAvoidance(self.scenario)
+        oa = ObstacleAvoidance()
         oa.start_avoiding_obstacles()
 
-# millis = round(time.time())
-# print(millis)
-# time.sleep(5)
-# newmillis = round(time.time())
-# print(newmillis)
-# print("delay= %ds" % (newmillis-millis))
 
-test = MyTester(1)
+test = MyTester()
 test.run_test()

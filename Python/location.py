@@ -1,13 +1,13 @@
 import math
 # from tester import Test
-import simulator
+from simulator import Simulator
 
 
-class DistanceCalculator:
+class Location:
 
-    def __init__(self, test_num):
-        self.scenario = test_num
-    #     self.tester = Test(test_num)
+    def __init__(self):
+        self.simulator = Simulator()
+        return
 
     def calculate_distance(self, lat1, lon1, lat2, lon2):
         earth_radius = 6371
@@ -27,17 +27,17 @@ class DistanceCalculator:
     # This method goes to Location library shai would provide in order
     # to get the current latitude of the drone
     def get_current_latitude(self):
-        latitude = simulator.latitude_reading(self.scenario)
+        latitude = self.simulator.latitude_reading()
         return latitude
 
     # This method goes to Location library shai would provide in order
     # to get the current longitude of the drone
     def get_current_longitude(self):
-        longitude = simulator.longitude_reading(self.scenario)
+        longitude = self.simulator.longitude_reading()
         return longitude
 
     # This method goes to Location library shai would provide in order
     # to get the current height of the drone
     def get_current_height(self):
-        height = simulator.height_reading(self.scenario)
+        height = self.simulator.height_reading()
         return height

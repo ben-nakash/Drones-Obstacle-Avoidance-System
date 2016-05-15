@@ -1,36 +1,46 @@
-from lidar_lite import LidarLite
-import simulator
+# from lidar_lite import LidarLite
+from simulator import Simulator
 
 
 class Sensors:
 
-    def __init__(self, test_num):
-        self.scenario = test_num
-        self.lidar = LidarLite()
+    def __init__(self):
+        self.simulator = Simulator()
+        # When not simulating the data, we will use this class object to get the data from the sensors.
+        # self.lidar = LidarLite()
+        return
 
     def connect(self):
-        for i in range(0, 5):
-            if self.lidar.connect(1) < -1:
-                continue
-            else:
-                return 0
-        return -1
+        # Since I simulate the data within the software there's no need to connect to the sensors,
+        # and for this reason this code is under comment, and this method returns a constant value just
+        # to be simbolic and to show that this step is needed.
+        # for i in range(0, 5):
+        #     if self.lidar.connect(1) < -1:
+        #         continue
+        #     else:
+        #         return 0
+        # return -1
+        return 0
 
     def check_ahead(self):
-        ahead_read = self.lidar.get_distance()
-        # return int(input("Enter Ahead Distance: "))
-        # return random.randint(800,6000)
-        # ahead_read = simulator.ahead_reading(self.scenario)
+        # Get data from file since I use a simulator.
+        ahead_read = self.simulator.ahead_reading()
+
+        # When not simulating the data - next line will be instead in order to get real data from sensor
+        # ahead_read = self.lidar.get_distance()
         return ahead_read
 
     def check_left_side(self):
-        # return int(input("Enter left Distance: "))
-        # return random.randint(2000,2100)
-        left_side_read = simulator.left_reading(self.scenario)
+        # Get data from file since I use a simulator.
+        left_side_read = self.simulator.left_reading()
         return left_side_read
 
     def check_right_side(self):
-        # return int(input("Enter right Distance: "))
-        # return random.randint(2000,2100)
-        right_side_read = simulator.right_reading(self.scenario)
+        # Get data from file since I use a simulator.
+        right_side_read = self.simulator.right_reading()
         return right_side_read
+
+    def check_below(self):
+        # Get data from file since I use a simulator.
+        below_read = self.simulator.below_reading()
+        return below_read
