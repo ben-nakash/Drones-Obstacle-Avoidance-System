@@ -37,16 +37,19 @@ class FlightData:
     def __degree_to_radian(self, deg):
         return deg * (math.pi/180)
 
+    # Get the current latitude of the drone according to its GPS device
     def get_current_latitude(self):
         latitude = float(self.__simulator.latitude_reading())
         # latitude = self.__vehicle.get_location_latitude()
         return latitude
 
+    # Get the current longitude of the drone according to its GPS device
     def get_current_longitude(self):
         longitude = float(self.__simulator.longitude_reading())
         # longitude = self.__vehicle.get_location_longitude()
         return longitude
 
+    # Get the current height of the drone according to its devices in centimeters
     def get_current_height(self):
         height = float(self.__simulator.height_reading())
         # height = self.__vehicle.get_location_altitude()

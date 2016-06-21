@@ -43,6 +43,8 @@ class Sensors:
         # When not simulating the data - next line will be instead in order to get real data from sensor
         # ahead_read = self.__front_sensor.get_distance()
         ahead_read = self.__simulator.ahead_reading()
+        if ahead_read <= 0 or ahead_read > 200:
+            self.__simulator.skip()
         return ahead_read
 
     def check_left_side(self):

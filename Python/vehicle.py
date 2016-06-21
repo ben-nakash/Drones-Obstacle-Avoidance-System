@@ -269,6 +269,9 @@ class Vehicle:
 
     def keep_altitude(self):
         print("keeping altitude")
+
+    def get_back_to_station(self):
+        print("Going back to station")
     """
     Loop until the drone is initialise
     """

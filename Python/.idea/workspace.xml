@@ -21,14 +21,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="obstacle_avoidance.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="obstacle_avoidance.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/obstacle_avoidance.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="94" column="33" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.44642857">
+              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#7801#7963#0" expanded="false" />
+                <element signature="e#8019#8776#0" expanded="false" />
+                <element signature="e#8830#10579#0" expanded="false" />
+                <element signature="e#10633#11699#0" expanded="false" />
+                <element signature="e#12271#12374#0" expanded="false" />
+                <element signature="e#12418#12744#0" expanded="false" />
+                <element signature="e#13997#14257#0" expanded="false" />
+                <element signature="e#14307#14688#0" expanded="false" />
+                <marker date="1466518922876" expanded="true" signature="369:498" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sensors.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sensors.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -37,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/flight_commands.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+              <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -59,64 +78,10 @@
         <entry file="file://$PROJECT_DIR$/simulator.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+              <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sensors.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sensors.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55745167">
-              <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lidar_lite.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lidar_lite.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tester.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tester.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stam.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stam.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="constants.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/constants.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="62" column="34" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="34" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -144,18 +109,18 @@
         <option value="$PROJECT_DIR$/distance_calculator.py" />
         <option value="$PROJECT_DIR$/Sensors.py" />
         <option value="$PROJECT_DIR$/data_combiner.py" />
-        <option value="$PROJECT_DIR$/vehicle.py" />
         <option value="$PROJECT_DIR$/Sensors Data/constants.py" />
         <option value="$PROJECT_DIR$/constants.py" />
         <option value="$PROJECT_DIR$/location.py" />
-        <option value="$PROJECT_DIR$/lidar_lite.py" />
-        <option value="$PROJECT_DIR$/sensors.py" />
         <option value="$PROJECT_DIR$/tester.py" />
         <option value="$PROJECT_DIR$/stam.py" />
+        <option value="$PROJECT_DIR$/vehicle.py" />
+        <option value="$PROJECT_DIR$/flight_commands.py" />
+        <option value="$PROJECT_DIR$/lidar_lite.py" />
         <option value="$PROJECT_DIR$/flight_data.py" />
         <option value="$PROJECT_DIR$/simulator.py" />
+        <option value="$PROJECT_DIR$/sensors.py" />
         <option value="$PROJECT_DIR$/obstacle_avoidance.py" />
-        <option value="$PROJECT_DIR$/flight_commands.py" />
       </list>
     </option>
   </component>
@@ -210,6 +175,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -230,7 +196,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -475,10 +440,10 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.tester" />
-        <item index="1" class="java.lang.String" itemvalue="Python.stam" />
-        <item index="2" class="java.lang.String" itemvalue="Python.obstacle_avoidance" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in tester" />
-        <item index="4" class="java.lang.String" itemvalue="Python.data_combiner" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in tester" />
+        <item index="2" class="java.lang.String" itemvalue="Python.data_combiner" />
+        <item index="3" class="java.lang.String" itemvalue="Python.stam" />
+        <item index="4" class="java.lang.String" itemvalue="Python.obstacle_avoidance" />
       </list>
     </recent_temporary>
   </component>
@@ -496,58 +461,58 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_tester - 2016.06.02 at 12h 25m 01s.xml">
+    <history-entry file="Unittests_in_tester - 2016.06.14 at 19h 03m 41s.xml">
       <configuration name="Unittests in tester" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tester - 2016.06.02 at 12h 25m 27s.xml">
+    <history-entry file="Unittests_in_tester - 2016.06.14 at 19h 05m 13s.xml">
       <configuration name="Unittests in tester" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tester - 2016.06.02 at 12h 25m 31s.xml">
+    <history-entry file="Unittests_in_tester - 2016.06.14 at 19h 06m 02s.xml">
       <configuration name="Unittests in tester" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tester - 2016.06.02 at 12h 27m 20s.xml">
+    <history-entry file="Unittests_in_tester - 2016.06.14 at 19h 06m 25s.xml">
       <configuration name="Unittests in tester" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tester - 2016.06.02 at 12h 27m 41s.xml">
+    <history-entry file="Unittests_in_tester - 2016.06.14 at 19h 06m 48s.xml">
       <configuration name="Unittests in tester" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tester - 2016.06.02 at 12h 50m 49s.xml">
+    <history-entry file="Unittests_in_tester - 2016.06.14 at 19h 08m 43s.xml">
       <configuration name="Unittests in tester" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tester - 2016.06.02 at 13h 51m 27s.xml">
+    <history-entry file="Unittests_in_tester - 2016.06.14 at 19h 09m 50s.xml">
       <configuration name="Unittests in tester" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tester - 2016.06.02 at 13h 51m 53s.xml">
+    <history-entry file="Unittests_in_tester - 2016.06.14 at 19h 11m 19s.xml">
       <configuration name="Unittests in tester" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tester - 2016.06.07 at 10h 53m 15s.xml">
+    <history-entry file="Unittests_in_tester - 2016.06.14 at 22h 47m 45s.xml">
       <configuration name="Unittests in tester" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tester - 2016.06.07 at 11h 06m 32s.xml">
+    <history-entry file="Unittests_in_tester - 2016.06.14 at 22h 48m 06s.xml">
       <configuration name="Unittests in tester" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1796875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.116145834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.78142077" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="268" y="165" width="1277" height="759" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.9114754" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="488" y="64" width="944" height="878" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -574,12 +539,43 @@
           <url>file://$PROJECT_DIR$/distance_calculator.py</url>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/flight_commands.py</url>
+          <line>17</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/sensors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lidar_lite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tester.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sensors.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -608,6 +604,15 @@
           <caret line="171" column="45" selection-start-line="171" selection-start-column="45" selection-end-line="171" selection-end-column="45" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#7801#7963#0" expanded="false" />
+            <element signature="e#8019#8776#0" expanded="false" />
+            <element signature="e#8830#10579#0" expanded="false" />
+            <element signature="e#10633#11699#0" expanded="false" />
+            <element signature="e#12271#12374#0" expanded="false" />
+            <element signature="e#12418#12744#0" expanded="false" />
+            <element signature="e#13997#14257#0" expanded="false" />
+            <element signature="e#14307#14688#0" expanded="false" />
+            <marker date="1466518922876" expanded="true" signature="369:498" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -648,6 +653,15 @@
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#7801#7963#0" expanded="false" />
+            <element signature="e#8019#8776#0" expanded="false" />
+            <element signature="e#8830#10579#0" expanded="false" />
+            <element signature="e#10633#11699#0" expanded="false" />
+            <element signature="e#12271#12374#0" expanded="false" />
+            <element signature="e#12418#12744#0" expanded="false" />
+            <element signature="e#13997#14257#0" expanded="false" />
+            <element signature="e#14307#14688#0" expanded="false" />
+            <marker date="1466518922876" expanded="true" signature="369:498" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -688,6 +702,15 @@
           <caret line="128" column="33" selection-start-line="128" selection-start-column="33" selection-end-line="128" selection-end-column="33" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#7801#7963#0" expanded="false" />
+            <element signature="e#8019#8776#0" expanded="false" />
+            <element signature="e#8830#10579#0" expanded="false" />
+            <element signature="e#10633#11699#0" expanded="false" />
+            <element signature="e#12271#12374#0" expanded="false" />
+            <element signature="e#12418#12744#0" expanded="false" />
+            <element signature="e#13997#14257#0" expanded="false" />
+            <element signature="e#14307#14688#0" expanded="false" />
+            <marker date="1466518922876" expanded="true" signature="369:498" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -721,6 +744,15 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#7801#7963#0" expanded="false" />
+            <element signature="e#8019#8776#0" expanded="false" />
+            <element signature="e#8830#10579#0" expanded="false" />
+            <element signature="e#10633#11699#0" expanded="false" />
+            <element signature="e#12271#12374#0" expanded="false" />
+            <element signature="e#12418#12744#0" expanded="false" />
+            <element signature="e#13997#14257#0" expanded="false" />
+            <element signature="e#14307#14688#0" expanded="false" />
+            <marker date="1466518922876" expanded="true" signature="369:498" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -746,6 +778,15 @@
           <caret line="90" column="63" selection-start-line="90" selection-start-column="63" selection-end-line="90" selection-end-column="63" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#7801#7963#0" expanded="false" />
+            <element signature="e#8019#8776#0" expanded="false" />
+            <element signature="e#8830#10579#0" expanded="false" />
+            <element signature="e#10633#11699#0" expanded="false" />
+            <element signature="e#12271#12374#0" expanded="false" />
+            <element signature="e#12418#12744#0" expanded="false" />
+            <element signature="e#13997#14257#0" expanded="false" />
+            <element signature="e#14307#14688#0" expanded="false" />
+            <marker date="1466518922876" expanded="true" signature="369:498" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -779,6 +820,15 @@
           <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#7801#7963#0" expanded="false" />
+            <element signature="e#8019#8776#0" expanded="false" />
+            <element signature="e#8830#10579#0" expanded="false" />
+            <element signature="e#10633#11699#0" expanded="false" />
+            <element signature="e#12271#12374#0" expanded="false" />
+            <element signature="e#12418#12744#0" expanded="false" />
+            <element signature="e#13997#14257#0" expanded="false" />
+            <element signature="e#14307#14688#0" expanded="false" />
+            <marker date="1466518922876" expanded="true" signature="369:498" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -812,6 +862,15 @@
           <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#7801#7963#0" expanded="false" />
+            <element signature="e#8019#8776#0" expanded="false" />
+            <element signature="e#8830#10579#0" expanded="false" />
+            <element signature="e#10633#11699#0" expanded="false" />
+            <element signature="e#12271#12374#0" expanded="false" />
+            <element signature="e#12418#12744#0" expanded="false" />
+            <element signature="e#13997#14257#0" expanded="false" />
+            <element signature="e#14307#14688#0" expanded="false" />
+            <marker date="1466518922876" expanded="true" signature="369:498" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -845,6 +904,15 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#7801#7963#0" expanded="false" />
+            <element signature="e#8019#8776#0" expanded="false" />
+            <element signature="e#8830#10579#0" expanded="false" />
+            <element signature="e#10633#11699#0" expanded="false" />
+            <element signature="e#12271#12374#0" expanded="false" />
+            <element signature="e#12418#12744#0" expanded="false" />
+            <element signature="e#13997#14257#0" expanded="false" />
+            <element signature="e#14307#14688#0" expanded="false" />
+            <marker date="1466518922876" expanded="true" signature="369:498" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -885,13 +953,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_combiner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="50" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Sensors Data/leftSensorData.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -899,34 +960,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Sensors Data/SensorData.txt">
+    <entry file="file://$PROJECT_DIR$/tester.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_combiner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="8" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lidar_lite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vehicle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="111" column="23" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/obstacle_avoidance.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="94" column="33" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flight_commands.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.50284415">
+          <caret line="247" column="0" selection-start-line="247" selection-start-column="0" selection-end-line="247" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -941,57 +1014,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/simulator.py">
+    <entry file="file://$PROJECT_DIR$/flight_commands.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lidar_lite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tester.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stam.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="34" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="34" />
+          <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sensors.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55745167">
-          <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/obstacle_avoidance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44642857">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#7801#7963#0" expanded="false" />
+            <element signature="e#8019#8776#0" expanded="false" />
+            <element signature="e#8830#10579#0" expanded="false" />
+            <element signature="e#10633#11699#0" expanded="false" />
+            <element signature="e#12271#12374#0" expanded="false" />
+            <element signature="e#12418#12744#0" expanded="false" />
+            <element signature="e#13997#14257#0" expanded="false" />
+            <element signature="e#14307#14688#0" expanded="false" />
+            <marker date="1466518922876" expanded="true" signature="369:498" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

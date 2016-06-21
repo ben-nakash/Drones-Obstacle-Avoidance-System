@@ -34,10 +34,4 @@ class LidarLite:
         self.__write_and_wait(self.__DIST_WRITE_REG, self.__DIST_WRITE_VAL)
         dist1 = self.__read_and_wait(self.__DIST_READ_REG1)
         dist2 = self.__read_and_wait(self.__DIST_READ_REG2)
-        return (dist1 << 8) + dist2
-
-    def __signed_int(self, value):
-        if value > 127:
-            return (256-value) * (-1)
-        else:
-            return value
+        return int((dist1 << 8) + dist2)

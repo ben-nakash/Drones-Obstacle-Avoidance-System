@@ -35,6 +35,10 @@ class FlightCommands:
         print("going up")
         # self.__vehicle.move_up()
 
+    def go_down(self):
+        print("going down")
+        # self.__vehicle.move_down()
+
     def slow_down(self, distance):
         if isinstance(distance, float) is False and isinstance(distance, int) is False:
             raise TypeError('Expected variable of type float and got a variable of type ' + type(distance).__name__)
@@ -48,3 +52,7 @@ class FlightCommands:
         # self.__vehicle.set_groundspeed(velocity)
         print("slowing down")
         return
+
+    def go_back_to_base(self):
+        print("Destination changed: going back home")
+        # self.__vehicle.get_back_to_station()

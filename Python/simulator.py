@@ -11,32 +11,39 @@ class Simulator:
         self.__longitude = 0
         self.__index = -1
         try:
-            self.sensors_data_file = open('Sensors Data\\SensorData.txt', 'r')
+            self.__leftSensorData = open('Sensors Data\\leftSensorData.txt', 'r')
+            self.__middleSensorData = open('Sensors Data\\middleSensorData.txt', 'r')
+            self.__rightSensorData = open('Sensors Data\\rightSensorData.txt', 'r')
         except:
             print("Error: Can't open sensors data file")
         return
 
     def ahead_reading(self):
-        time.sleep(1)
-        return float(self.sensors_data_file.readline())
+        time.sleep(0.01)
+        return int(self.__middleSensorData.readline())
 
     def left_reading(self):
-        return float(self.sensors_data_file.readline())
+        return int(self.__leftSensorData.readline())
 
     def right_reading(self):
-        return float(self.sensors_data_file.readline())
+        return int(self.__rightSensorData.readline())
 
     def below_reading(self):
-        return 20.0
+        return 1000
 
     def height_reading(self):
         self.__height += random.uniform(1, 10) * 0.15
         return self.__height
 
     def latitude_reading(self):
-        self.__latitude += random.uniform(1, 3) * 0.000001
+        self.__latitude += random.uniform(1, 3) * 0.00000004
         return self.__latitude
 
     def longitude_reading(self):
-        self.__longitude += random.uniform(1, 3) * 0.000001
+        self.__longitude += random.uniform(1, 3) * 0.00000001
         return self.__longitude
+
+    def skip(self):
+        self.__leftSensorData.readline()
+        self.__rightSensorData.readline()
+        return
