@@ -20,10 +20,16 @@ class FlightData:
     #     return
 
     def __init__(self):
+    #     if isinstance(simulator, Simulator) is False:
+    #         raise TypeError('Expected variable of type "Simulator" and got a variable of type ' +
+    #                         type(simulator).__name__)
+    #
         self.__simulator = Simulator()
-        return
 
     def calculate_distance(self, lat1, lon1, lat2, lon2):
+        if not isinstance(lat1, float) or not isinstance(lon1, float) or not isinstance(lat2, float) or not isinstance(lon2, float):
+            raise TypeError('Expected type float')
+
         phi1 = self.__degree_to_radian(lat1)
         phi2 = self.__degree_to_radian(lat2)
         dPhi = self.__degree_to_radian((lat2-lat1))
@@ -39,18 +45,15 @@ class FlightData:
 
     # Get the current latitude of the drone according to its GPS device
     def get_current_latitude(self):
-        latitude = float(self.__simulator.latitude_reading())
-        # latitude = self.__vehicle.get_location_latitude()
-        return latitude
+        return float(self.__simulator.latitude_reading())
+        # return self.__vehicle.get_location_latitude()
 
     # Get the current longitude of the drone according to its GPS device
     def get_current_longitude(self):
-        longitude = float(self.__simulator.longitude_reading())
-        # longitude = self.__vehicle.get_location_longitude()
-        return longitude
+        return float(self.__simulator.longitude_reading())
+        # return self.__vehicle.get_location_longitude()
 
     # Get the current height of the drone according to its devices in centimeters
     def get_current_height(self):
-        height = float(self.__simulator.height_reading())
-        # height = self.__vehicle.get_location_altitude()
-        return height
+        return float(self.__simulator.height_reading())
+        # return self.__vehicle.get_location_altitude()

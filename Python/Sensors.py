@@ -15,7 +15,7 @@ class Sensors:
         # self.__front_sensor = LidarLite(self.__FRONT_SENSOR_BUSS)
         # self.__right_sensor = LidarLite(self.__RIGHT_SENSOR_BUSS)
         # self.__below_sensor = LidarLite(self.__BOTTOM_SENSOR_BUSS)
-        return
+
 
     def connect(self):
         # Since I simulate the data within the software there's no need to connect to the sensors,

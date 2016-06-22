@@ -1,3 +1,7 @@
 Python/stam.py
 Python/.idea/workspace.xml
 Python/.idea/workspace.xml
+*.pyc
+Python/__pycache__/flight_commands.cpython-35.pyc
+*.pyc
+Python/__pycache__/flight_commands.cpython-35.pyc

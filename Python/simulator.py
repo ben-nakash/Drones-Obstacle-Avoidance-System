@@ -6,7 +6,8 @@ class Simulator:
 
     def __init__(self):
         self.__start_time = round(time.time())
-        self.__height = 0
+        self.__below_reading = 1000
+        self.__height = 800
         self.__latitude = 0
         self.__longitude = 0
         self.__index = -1
@@ -29,7 +30,8 @@ class Simulator:
         return int(self.__rightSensorData.readline())
 
     def below_reading(self):
-        return 1000
+        self.__below_reading += int(random.uniform(-20,20))
+        return self.__below_reading
 
     def height_reading(self):
         self.__height += random.uniform(1, 10) * 0.15
