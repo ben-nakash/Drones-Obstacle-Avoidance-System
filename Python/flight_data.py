@@ -1,5 +1,5 @@
 import math
-from simulator import Simulator
+import simulator
 
 
 class FlightData:
@@ -19,12 +19,11 @@ class FlightData:
     #     self.__vehicle = vehicle
     #     return
 
-    def __init__(self):
+    # def __init__(self):
     #     if isinstance(simulator, Simulator) is False:
     #         raise TypeError('Expected variable of type "Simulator" and got a variable of type ' +
     #                         type(simulator).__name__)
     #
-        self.__simulator = Simulator()
 
     def calculate_distance(self, lat1, lon1, lat2, lon2):
         if not isinstance(lat1, float) or not isinstance(lon1, float) or not isinstance(lat2, float) or not isinstance(lon2, float):
@@ -45,15 +44,15 @@ class FlightData:
 
     # Get the current latitude of the drone according to its GPS device
     def get_current_latitude(self):
-        return float(self.__simulator.latitude_reading())
+        return float(simulator.latitude_reading())
         # return self.__vehicle.get_location_latitude()
 
     # Get the current longitude of the drone according to its GPS device
     def get_current_longitude(self):
-        return float(self.__simulator.longitude_reading())
+        return float(simulator.longitude_reading())
         # return self.__vehicle.get_location_longitude()
 
     # Get the current height of the drone according to its devices in centimeters
     def get_current_height(self):
-        return float(self.__simulator.height_reading())
+        return int(simulator.height_reading())
         # return self.__vehicle.get_location_altitude()

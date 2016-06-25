@@ -1,5 +1,5 @@
 # from lidar_lite import LidarLite
-from simulator import Simulator
+import simulator
 
 class Sensors:
 
@@ -8,8 +8,7 @@ class Sensors:
     __RIGHT_SENSOR_BUSS = 3
     __BOTTOM_SENSOR_BUSS = 4
 
-    def __init__(self):
-        self.__simulator = Simulator()
+    # def __init__(self):
         # When not simulating the data, we will use this class object to get the data from the sensors.
         # self.__left_sensor = LidarLite(self.__LEFT_SENSOR_BUSS)
         # self.__front_sensor = LidarLite(self.__FRONT_SENSOR_BUSS)
@@ -42,25 +41,25 @@ class Sensors:
     def check_ahead(self):
         # When not simulating the data - next line will be instead in order to get real data from sensor
         # ahead_read = self.__front_sensor.get_distance()
-        ahead_read = self.__simulator.ahead_reading()
+        ahead_read = simulator.ahead_reading()
         if ahead_read <= 0 or ahead_read > 200:
-            self.__simulator.skip()
+            simulator.skip()
         return ahead_read
 
     def check_left_side(self):
         # When not simulating the data - next line will be instead in order to get real data from sensor
         # left_side_read = self.__left_sensor.get_distance()
-        left_side_read = self.__simulator.left_reading()
+        left_side_read = simulator.left_reading()
         return left_side_read
 
     def check_right_side(self):
         # When not simulating the data - next line will be instead in order to get real data from sensor
         # right_side_read = self.__right_sensor.get_distance()
-        right_side_read = self.__simulator.right_reading()
+        right_side_read = simulator.right_reading()
         return right_side_read
 
     def check_below(self):
         # When not simulating the data - next line will be instead in order to get real data from sensor
         # below_read = self.__below_sensor.get_distance()
-        below_read = self.__simulator.below_reading()
+        below_read = simulator.below_reading()
         return below_read

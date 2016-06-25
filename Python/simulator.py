@@ -1,51 +1,84 @@
 import random
 import time
 
+start_time = round(time.time())
+__below_reading = 1000
+__height = 1000
+__latitude = 0
+__longitude = 0
+__index = -1
+try:
+    __leftSensorData = open('Sensors Data\\leftSensorData.txt', 'r')
+    __middleSensorData = open('Sensors Data\\middleSensorData.txt', 'r')
+    __rightSensorData = open('Sensors Data\\rightSensorData.txt', 'r')
+except:
+    print("Error: Can't open sensors data file")
 
-class Simulator:
 
-    def __init__(self):
-        self.__start_time = round(time.time())
-        self.__below_reading = 1000
-        self.__height = 800
-        self.__latitude = 0
-        self.__longitude = 0
-        self.__index = -1
-        try:
-            self.__leftSensorData = open('Sensors Data\\leftSensorData.txt', 'r')
-            self.__middleSensorData = open('Sensors Data\\middleSensorData.txt', 'r')
-            self.__rightSensorData = open('Sensors Data\\rightSensorData.txt', 'r')
-        except:
-            print("Error: Can't open sensors data file")
-        return
+def ahead_reading():
+    time.sleep(0.01)
+    return int(__middleSensorData.readline())
 
-    def ahead_reading(self):
-        time.sleep(0.01)
-        return int(self.__middleSensorData.readline())
 
-    def left_reading(self):
-        return int(self.__leftSensorData.readline())
+def left_reading():
+    return int(__leftSensorData.readline())
 
-    def right_reading(self):
-        return int(self.__rightSensorData.readline())
 
-    def below_reading(self):
-        self.__below_reading += int(random.uniform(-20,20))
-        return self.__below_reading
+def right_reading():
+    return int(__rightSensorData.readline())
 
-    def height_reading(self):
-        self.__height += random.uniform(1, 10) * 0.15
-        return self.__height
 
-    def latitude_reading(self):
-        self.__latitude += random.uniform(1, 3) * 0.00000004
-        return self.__latitude
+def below_reading():
+    global __below_reading
+    return __below_reading
 
-    def longitude_reading(self):
-        self.__longitude += random.uniform(1, 3) * 0.00000001
-        return self.__longitude
 
-    def skip(self):
-        self.__leftSensorData.readline()
-        self.__rightSensorData.readline()
-        return
+def height_reading():
+    global __height
+    return __height
+
+
+def latitude_reading():
+    global __latitude
+    return __latitude
+
+
+def longitude_reading():
+    global __longitude
+    return __longitude
+
+
+def change_longitude_latitude():
+    global __latitude
+    global __longitude
+    __longitude += random.uniform(1, 3) * 0.00000001
+    __latitude += random.uniform(1, 3) * 0.00000004
+
+
+def skip():
+    __leftSensorData.readline()
+    __rightSensorData.readline()
+    return
+
+
+def go_up():
+    global __below_reading
+    global __height
+    __height += int(random.uniform(10, 25))
+    __below_reading += int(random.uniform(10, 25))
+    return __below_reading
+
+
+def go_down():
+    global __below_reading
+    global __height
+    __height -= int(random.uniform(10, 25))
+    __below_reading -= int(random.uniform(10, 25))
+    return __below_reading
+
+
+def altitude_change():
+    global __below_reading
+    global __height
+    __below_reading += int(random.uniform(-15, 15))
+    __height = __below_reading + int(random.uniform(0, 23))

@@ -1,23 +1,24 @@
 import time
 import math
+import simulator
 from stoppable_thread import StoppableThread
 from flight_data import FlightData
 from flight_commands import FlightCommands
 from sensors import Sensors
 # from vehicle import Vehicle
 
-
 class ObstacleAvoidance(StoppableThread):
     # Class constants
     LEFT = "left"
     RIGHT = "right"
     UP = "up"
-    DEVIATION = 20
+    DEVIATION_HORIZONTAL = 20
+    DEVIATION_VERTICAL = 500
     NO_OBSTACLES_AHEAD = 1
     CAUTION_DISTANCE = 200    # 4000, Measured in Centimeters
     DANGER_DISTANCE = 125     # 1000, Measured in Centimeters
     CAUTION_ALTITUDE = 375    # 3000, Measured in Centimeters.
-    DANGER_ALTITUDE = 500     # 4000, Measured in Centimeters.
+    DANGER_ALTITUDE = 4000    # 4000, Measured in Centimeters.
     CONSTANT_HEIGHT = 1000    # 1000, Measured in Centimeters.
     MAX_LEFT_RIGHT = 0.875    # 7.0, Maximum distance the drone would go right/left until trying to pass and obstacle from above. Measured in Meters.
     LEFT_SENSOR = "leftSensor"
@@ -88,6 +89,8 @@ class ObstacleAvoidance(StoppableThread):
 
     def run(self):
         while not self.stopped():
+            simulator.altitude_change()
+
             self.__num_of_lines -= 1
             if self.__num_of_lines == 0:
                 self.stopit()
@@ -113,11 +116,11 @@ class ObstacleAvoidance(StoppableThread):
                 # There's an obstacle in less than 10 meters - DANGER!
                 # In such case the algorithm would slow down the drone drastically in order to give it more
                 # time to manouver and avoid a collision.
-                print("Obstacle in less than 10 meters!")
-                print("Slowing Down")
+                print("CAUTION: Obstacle in less than 1.25 meters!")
+                print("Slowing Down to avoid collision")
                 self.__flight_commands.slow_down(ahead_distance)
             else:
-                print("Obstacle in less than 40 meters")
+                print("Obstacle in less than 2 meters")
 
             # Get a reading from the left side sensor.
             left_side_distance = self.__get_sensor_reading(self.LEFT_SENSOR)
@@ -138,13 +141,13 @@ class ObstacleAvoidance(StoppableThread):
                 continue
 
             # Check if right side is clear.
-            elif right_side_distance > left_side_distance + self.DEVIATION:
+            elif right_side_distance > left_side_distance + self.DEVIATION_HORIZONTAL:
                 self.__move_in_direction(self.RIGHT)
                 self.__check_flags()
                 print("Going right")
 
             # Check if left side is clear.
-            elif left_side_distance > right_side_distance + self.DEVIATION:
+            elif left_side_distance > right_side_distance + self.DEVIATION_HORIZONTAL:
                 self.__move_in_direction(self.LEFT)
                 self.__check_flags()
                 print("Going left")
@@ -290,17 +293,26 @@ class ObstacleAvoidance(StoppableThread):
             self.__keep_altitude = True
 
     def __safe_for_landing(self):
+        print("Check if safe to land")
         drone_altitude = self.__flight_data.get_current_height()
         bottom_sensor_distance = self.__get_sensor_reading(self.BOTTOM_SENSOR)
+        print("Pixhawk height: " + str(drone_altitude) + ", Sensor height: " + str(bottom_sensor_distance))
         heigh_difference = math.fabs(bottom_sensor_distance - drone_altitude)
-        if heigh_difference > self.DEVIATION:
+        if heigh_difference > self.DEVIATION_HORIZONTAL:
             return False
         else:
             return True
 
     def __fix_altitude(self):
         bottom_sensor_distance = self.__get_sensor_reading(self.BOTTOM_SENSOR)
-        print("Distance Below: " + str(bottom_sensor_distance))
+        altitude = self.__flight_data.get_current_height()
+        print("Sensor Below: " + str(bottom_sensor_distance) + ", Pixhawk: " + str(altitude))
+
+        if bottom_sensor_distance > self.DANGER_ALTITUDE:
+            self.__safety_protocol = True
+            self.__follow_safety_protocol()
+            return
+
         if self.__keep_altitude:
             # This means the drone passed an obstacle from above. in that case I want to maintain my current altitude
             # for 10 seconds to make sure the drone passed the obstacle, before getting back to regular altitude.
@@ -316,7 +328,7 @@ class ObstacleAvoidance(StoppableThread):
 
         # Fix the height of the drone to 10 meters from the ground.
         delta_altitude = self.CONSTANT_HEIGHT - bottom_sensor_distance
-        if math.fabs(delta_altitude) < self.DEVIATION:
+        if math.fabs(delta_altitude) < self.DEVIATION_HORIZONTAL:
             return
         elif delta_altitude > 0:
             self.__flight_commands.go_up()

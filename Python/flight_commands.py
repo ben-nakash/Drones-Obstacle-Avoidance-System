@@ -1,4 +1,4 @@
-# from simulator import Simulator
+import simulator
 # from vehicle import Vehicle
 
 class FlightCommands:
@@ -16,13 +16,6 @@ class FlightCommands:
     #
     #     self.__vehicle = vehicle
 
-    # def __init__(self, sim):
-    #     if isinstance(sim, Simulator) is False:
-    #         raise TypeError('Expected variable of type "Simulator" and got a variable of type ' +
-    #                         type(sim).__name__)
-    #
-    #     self.__simulator = sim
-
     def land(self):
         # print("landing")
         # self.__vehicle.landing()
@@ -34,23 +27,24 @@ class FlightCommands:
         return
 
     def go_left(self):
-        # print("going left")
+        simulator.change_longitude_latitude()
         # self.__vehicle.move_left()
         return
 
     def go_right(self):
-        # print("going right")
+        simulator.change_longitude_latitude()
         # self.__vehicle.move_right()
         return
 
     def go_up(self):
-        # print("going up")
+        simulator.go_up()
         # self.__vehicle.move_up()
         return
 
     def go_down(self):
         # print("going down")
         # self.__vehicle.move_down()
+        simulator.go_down()
         return
 
     def slow_down(self, distance):
@@ -64,7 +58,6 @@ class FlightCommands:
         #
         # velocity = distance/self.__TIME_TO_COLLISION
         # self.__vehicle.set_groundspeed(velocity)
-        # print("slowing down")
         return
 
     def go_back_to_base(self):
