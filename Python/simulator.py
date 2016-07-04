@@ -6,7 +6,7 @@ __below_reading = 1000
 __height = 1000
 __latitude = 0
 __longitude = 0
-__index = -1
+
 try:
     __leftSensorData = open('Sensors Data\\leftSensorData.txt', 'r')
     __middleSensorData = open('Sensors Data\\middleSensorData.txt', 'r')
@@ -16,7 +16,7 @@ except:
 
 
 def ahead_reading():
-    time.sleep(0.01)
+    time.sleep(0.1)
     return int(__middleSensorData.readline())
 
 

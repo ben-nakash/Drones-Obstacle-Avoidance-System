@@ -3,7 +3,7 @@ import simulator
 
 class FlightCommands:
 
-    __TIME_TO_COLLISION = 10
+    TIME_TO_COLLISION = 10
 
     # This module should have this constructor which gets a vehicle object in order to send the proper orders
     # to the drone. Since I can't initialize this object, This section and all vehicle-related commands
@@ -56,7 +56,7 @@ class FlightCommands:
         #  # Calculating a new velocity for the drone to give it 10 seconds before colliding. 10 Seconds should be
         #  # a sufficient amount of time to avoid colliding with the detected object.
         #
-        # velocity = distance/self.__TIME_TO_COLLISION
+        # velocity = distance/self.TIME_TO_COLLISION
         # self.__vehicle.set_groundspeed(velocity)
         return
 

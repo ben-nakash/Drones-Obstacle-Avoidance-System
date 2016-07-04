@@ -15,12 +15,12 @@ class ObstacleAvoidance(StoppableThread):
     DEVIATION_HORIZONTAL = 20
     DEVIATION_VERTICAL = 500
     NO_OBSTACLES_AHEAD = 1
-    CAUTION_DISTANCE = 200    # 4000, Measured in Centimeters
-    DANGER_DISTANCE = 125     # 1000, Measured in Centimeters
-    CAUTION_ALTITUDE = 375    # 3000, Measured in Centimeters.
-    DANGER_ALTITUDE = 4000    # 4000, Measured in Centimeters.
-    CONSTANT_HEIGHT = 1000    # 1000, Measured in Centimeters.
-    MAX_LEFT_RIGHT = 0.875    # 7.0, Maximum distance the drone would go right/left until trying to pass and obstacle from above. Measured in Meters.
+    CAUTION_DISTANCE = 200    # Should be 4000, Measured in Centimeters
+    DANGER_DISTANCE = 125     # Should be 1000, Measured in Centimeters
+    CAUTION_ALTITUDE = 375    # Should be 3000, Measured in Centimeters.
+    DANGER_ALTITUDE = 4000    # Should be 4000, Measured in Centimeters.
+    CONSTANT_HEIGHT = 1000    # Should be 1000, Measured in Centimeters.
+    MAX_LEFT_RIGHT = 0.875    # Should be 7.0, Maximum distance the drone would go right/left until trying to pass and obstacle from above. Measured in Meters.
     LEFT_SENSOR = "leftSensor"
     RIGHT_SENSOR = "rightSensor"
     FRONT_SENSOR = "frontSensor"
@@ -79,7 +79,8 @@ class ObstacleAvoidance(StoppableThread):
         # malfunction in the system
         self.__illegal_input_counter = 0
         self.__legal_input = True
-        self.__num_of_lines = int(self.__get_number_of_line_in_file())
+
+        self.__num_of_lines = int(self.__get_number_of_line_in_file())  # Delete when moving to a full functioning system.
 
         # Initializing the sensors
         if self.__sensors.connect() == -1:
@@ -87,14 +88,20 @@ class ObstacleAvoidance(StoppableThread):
 
         print("Connected Successfuly to Sensors!")
 
+        # Flag that indicates if the system is activated in order to give the user the knowledge if it should override
+        # other flight commands given to the drone. The flag is 'True' only for left/right/up maneuvers and False
+        # for all other cases including fixing the drone's altitude, since the altitude is fixed for 10 meters and
+        # any other running software within the drone shouldn't change its height.
+        self.__is_active = False
+
     def run(self):
         while not self.stopped():
-            simulator.altitude_change()
+            simulator.altitude_change()     # Delete when moving to a full functioning system.
 
-            self.__num_of_lines -= 1
-            if self.__num_of_lines == 0:
-                self.stopit()
-                continue
+            self.__num_of_lines -= 1        # Delete when moving to a full functioning system.
+            if self.__num_of_lines == 0:    # Delete when moving to a full functioning system.
+                self.stopit()               # Delete when moving to a full functioning system.
+                continue                    # Delete when moving to a full functioning system.
 
             print("-----------------------------------------------------------")
             if self.__safety_protocol is True:
@@ -109,6 +116,8 @@ class ObstacleAvoidance(StoppableThread):
                 self.__check_flags()
                 self.__fix_altitude()
                 self.__last_move = None
+                self.__is_active = False
+                print("Is Active = " + str(self.__is_active))
                 self.__right_distance = self.__left_distance = self.__up_distance = 0.0
                 continue
 
@@ -121,6 +130,9 @@ class ObstacleAvoidance(StoppableThread):
                 self.__flight_commands.slow_down(ahead_distance)
             else:
                 print("Obstacle in less than 2 meters")
+
+            self.__is_active = True
+            print("Is Active = " + str(self.__is_active))
 
             # Get a reading from the left side sensor.
             left_side_distance = self.__get_sensor_reading(self.LEFT_SENSOR)
@@ -248,7 +260,6 @@ class ObstacleAvoidance(StoppableThread):
     def __get_sensor_reading(self, sensor):
         legal_input = False
         while legal_input is False:
-            # distance = -1
             if sensor is self.FRONT_SENSOR:
                 distance = self.__sensors.check_ahead()
 
@@ -349,7 +360,10 @@ class ObstacleAvoidance(StoppableThread):
         # so in this case we prefer it would abort the mission in so it won't get too high or damaged.
         if self.__safe_for_landing():
             # while(self.__get_sensor_reading(self.__BOTTOM_SENSOR) > 10):
-            self.__flight_commands.land()
+            self.__flight_commands.land()   # Enter this into the while loop above.
             self.stopit()
         else:
             self.__flight_commands.go_back_to_base()
+
+    def take_control(self):
+        return self.__is_active

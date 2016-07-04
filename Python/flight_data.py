@@ -15,15 +15,8 @@ class FlightData:
     #     if isinstance(vehicle, Vehicle) is False:
     #         raise TypeError('Expected object of type Vehicle, got '+type(vehicle).__name__)
     #
-    #     self.__simulator = Simulator()
     #     self.__vehicle = vehicle
     #     return
-
-    # def __init__(self):
-    #     if isinstance(simulator, Simulator) is False:
-    #         raise TypeError('Expected variable of type "Simulator" and got a variable of type ' +
-    #                         type(simulator).__name__)
-    #
 
     def calculate_distance(self, lat1, lon1, lat2, lon2):
         if not isinstance(lat1, float) or not isinstance(lon1, float) or not isinstance(lat2, float) or not isinstance(lon2, float):
