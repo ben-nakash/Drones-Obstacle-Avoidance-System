@@ -11,6 +11,11 @@ class LidarLite:
     __DIST_READ_REG2 = 0x10
 
     def __init__(self, bus):
+        if not isinstance(bus, int):
+            raise TypeError('Expected variables of type int and got a variables of type ' + type(bus).__name__)
+        elif bus < 0:
+            raise ValueError('Illegal Sensor BUS address')
+
         self.__bus = bus
 
     def connect(self):
@@ -22,10 +27,16 @@ class LidarLite:
             return -1
 
     def __write_and_wait(self, register, value):
+        if not isinstance(register, int) or not isinstance(value, int):
+            raise TypeError('Expected variables of type int and got a variables of type ' + type(register).__name__ + type(value).__name__)
+
         self.__bus.write_byte_data(self.__ADDRESS, register, value)
         time.sleep(0.02)
 
     def __read_and_wait(self, register):
+        if not isinstance(register, int):
+            raise TypeError('Expected variables of type int and got a variables of type ' + type(register).__name__)
+
         res = self.__bus.read_byte_data(self.__ADDRESS, register)
         time.sleep(0.02)
         return res

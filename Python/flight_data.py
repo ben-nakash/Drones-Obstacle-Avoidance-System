@@ -33,6 +33,9 @@ class FlightData:
         return distance_in_meters
 
     def __degree_to_radian(self, deg):
+        if not isinstance(deg, float):
+            raise TypeError('Expected variable of type float and got a variable of type ' + type(deg).__name__)
+
         return deg * (math.pi/180)
 
     # Get the current latitude of the drone according to its GPS device

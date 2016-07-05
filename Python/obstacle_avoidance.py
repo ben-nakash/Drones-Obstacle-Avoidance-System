@@ -78,7 +78,7 @@ class ObstacleAvoidance(StoppableThread):
         # Counter and flag for being aware of a sequence of illegal sensor inputs in order to be aware of a
         # malfunction in the system
         self.__illegal_input_counter = 0
-        self.__legal_input = True
+        self.__last_input_legitimacy = True
 
         self.__num_of_lines = int(self.__get_number_of_line_in_file())  # Delete when moving to a full functioning system.
 
@@ -284,18 +284,25 @@ class ObstacleAvoidance(StoppableThread):
                 return distance
 
     def __check_measurement(self, measurement):
-        if isinstance(measurement, int):
+        is_int = isinstance(measurement, int)
+
+        if is_int is False and measurement is not "NACK":
+            raise TypeError('Expected variable of type int and got a variable of type ' + type(measurement).__name__)
+
+        if is_int:
             if measurement > 0:
-                self.__legal_input = True
+                self.__last_input_legitimacy = True
                 return True
-        if self.__legal_input is True:
+
+        if self.__last_input_legitimacy is True:
             self.__illegal_input_counter = 1
         else:
             self.__illegal_input_counter += 1
             if self.__illegal_input_counter >= 10:
                 raise SystemError('Malfunction in sensors, check physical connections')
 
-        self.__legal_input = False
+
+        self.__last_input_legitimacy = False
         return False
 
     def __check_flags(self):

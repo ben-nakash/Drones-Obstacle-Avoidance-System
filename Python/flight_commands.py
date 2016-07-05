@@ -17,12 +17,10 @@ class FlightCommands:
     #     self.__vehicle = vehicle
 
     def land(self):
-        # print("landing")
         # self.__vehicle.landing()
         return
 
     def maintain_altitude(self):
-        # print("maintaining altitude")
         # self.__vehicle.keep_altitude()
         return
 
@@ -42,7 +40,6 @@ class FlightCommands:
         return
 
     def go_down(self):
-        # print("going down")
         # self.__vehicle.move_down()
         simulator.go_down()
         return
