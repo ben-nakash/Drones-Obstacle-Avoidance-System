@@ -16,34 +16,41 @@ class FlightCommands:
     #
     #     self.__vehicle = vehicle
 
+    # Order the drone to land.
     def land(self):
         # self.__vehicle.landing()
         return
 
+    # Order the drone to maintain altitude
     def maintain_altitude(self):
         # self.__vehicle.keep_altitude()
         return
 
+    # Order the drone to fly to the left side
     def go_left(self):
         simulator.change_longitude_latitude()
         # self.__vehicle.move_left()
         return
 
+    # Order the drone to fly to the right side
     def go_right(self):
         simulator.change_longitude_latitude()
         # self.__vehicle.move_right()
         return
 
+    # Order the drone to ascend
     def go_up(self):
         simulator.go_up()
         # self.__vehicle.move_up()
         return
 
+    # Order the drone to decend
     def go_down(self):
         # self.__vehicle.move_down()
         simulator.go_down()
         return
 
+    # Order the drone to slow down in order to give it enough time to perform avoidance maneuvers.
     def slow_down(self, distance):
         if isinstance(distance, float) is False and isinstance(distance, int) is False:
             raise TypeError('Expected variable of type float and got a variable of type ' + type(distance).__name__)
@@ -57,6 +64,7 @@ class FlightCommands:
         # self.__vehicle.set_groundspeed(velocity)
         return
 
+    # Order the drone to change its destination to its dock.
     def go_back_to_base(self):
         print("Destination changed: going back home")
         # self.__vehicle.get_back_to_station()

@@ -15,7 +15,7 @@ class Sensors:
         # self.__right_sensor = LidarLite(self.__RIGHT_SENSOR_BUSS)
         # self.__below_sensor = LidarLite(self.__BOTTOM_SENSOR_BUSS)
 
-
+    # This method Establish the connection to the sensors.
     def connect(self):
         # Since I simulate the data within the software there's no need to connect to the sensors,
         # and for this reason this code is under comment and  returns a constant value only to show that this step
@@ -38,26 +38,30 @@ class Sensors:
         # return -1
         return 0
 
+    # Returns distance measurament from the front sensor
     def check_ahead(self):
         # When not simulating the data - next line will be instead in order to get real data from sensor
         # ahead_read = self.__front_sensor.get_distance()
         ahead_read = simulator.ahead_reading()
-        if ahead_read <= 0 or ahead_read > 200:
+        if ahead_read <= 0 or ahead_read > 200:  # This is the the CAUTION DISTANCE from ObstacleAvoidance class.
             simulator.skip()
         return ahead_read
 
+    # Returns distance measurament from the left sensor
     def check_left_side(self):
         # When not simulating the data - next line will be instead in order to get real data from sensor
         # left_side_read = self.__left_sensor.get_distance()
         left_side_read = simulator.left_reading()
         return left_side_read
 
+    # Returns distance measurament from the right sensor
     def check_right_side(self):
         # When not simulating the data - next line will be instead in order to get real data from sensor
         # right_side_read = self.__right_sensor.get_distance()
         right_side_read = simulator.right_reading()
         return right_side_read
 
+    # Returns distance measurament from the sensor below.
     def check_below(self):
         # When not simulating the data - next line will be instead in order to get real data from sensor
         # below_read = self.__below_sensor.get_distance()

@@ -18,6 +18,7 @@ class LidarLite:
 
         self.__bus = bus
 
+    # Eastablish a connection to the sensor
     def connect(self):
         try:
             self.__bus = smbus.SMBus(self.__bus)
@@ -41,6 +42,7 @@ class LidarLite:
         time.sleep(0.02)
         return res
 
+    # Get a distance reading from the sensor
     def get_distance(self):
         self.__write_and_wait(self.__DIST_WRITE_REG, self.__DIST_WRITE_VAL)
         dist1 = self.__read_and_wait(self.__DIST_READ_REG1)

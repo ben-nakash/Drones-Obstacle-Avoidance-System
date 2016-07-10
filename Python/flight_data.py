@@ -9,7 +9,7 @@ class FlightData:
     # This module should have this constructor which gets a vehicle object in order to send the proper orders
     # to the drone. Since I can't initialize this object, This section and all vehicle-related commands
     # are under comment.
-    
+
     # def __init__(self, vehicle):
     #     # Check for correct input
     #     if isinstance(vehicle, Vehicle) is False:
@@ -18,6 +18,7 @@ class FlightData:
     #     self.__vehicle = vehicle
     #     return
 
+    # Returns the distance between 2 GPS coordiantes represented by latitude-longitude parameters.
     def calculate_distance(self, lat1, lon1, lat2, lon2):
         if not isinstance(lat1, float) or not isinstance(lon1, float) or not isinstance(lat2, float) or not isinstance(lon2, float):
             raise TypeError('Expected type float')
@@ -32,23 +33,24 @@ class FlightData:
         distance_in_meters = self.__EARTH_RADIUS_IN_METERS*c
         return distance_in_meters
 
+    # Returns the equivalent degree in radians.
     def __degree_to_radian(self, deg):
         if not isinstance(deg, float):
             raise TypeError('Expected variable of type float and got a variable of type ' + type(deg).__name__)
 
         return deg * (math.pi/180)
 
-    # Get the current latitude of the drone according to its GPS device
+    # Return the current latitude of the drone according to its GPS device
     def get_current_latitude(self):
         return float(simulator.latitude_reading())
         # return self.__vehicle.get_location_latitude()
 
-    # Get the current longitude of the drone according to its GPS device
+    # Return the current longitude of the drone according to its GPS device
     def get_current_longitude(self):
         return float(simulator.longitude_reading())
         # return self.__vehicle.get_location_longitude()
 
-    # Get the current height of the drone according to its devices in centimeters
+    # Return the current height of the drone according to its devices in centimeters
     def get_current_height(self):
         return int(simulator.height_reading())
         # return self.__vehicle.get_location_altitude()
