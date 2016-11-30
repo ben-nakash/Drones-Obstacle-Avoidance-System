@@ -103,3 +103,7 @@ For proper use of the system the user must handle the following types of excepti
 	sensors. This error can indicate of a problem with the sensors connectors. 
 
 -------------------------------------------------------------------------------
+
+Further Development
+---------------------
+Further work that needs to be done is developing API for the outer system.
