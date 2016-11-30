@@ -85,11 +85,11 @@ Exceptions
 In different situations the system will throw exceptions related to its cause.
 For proper use of the system the user must handle the following types of exceptions:
 
-1.	ConnectionError:
+1.ConnectionError:
 	Occurs after the system have made several attempts to connect to the 
 	sensors with no success.
 	
-2.	TypeError:
+2.TypeError:
 	Occurs when a method/function within the software receives a wrong type
 	of input.
 
